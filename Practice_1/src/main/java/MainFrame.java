@@ -16,7 +16,6 @@ public class MainFrame extends JFrame{
 	public MainFrame() {	
 		super("Test Application");
 
-		
 		panel = new PanelClass();
 		buttons = new Buttons();
 		descriptions = new Descriptions();
@@ -27,13 +26,13 @@ public class MainFrame extends JFrame{
 		add(descriptions, BorderLayout.NORTH);
 		add(buttons, BorderLayout.SOUTH);
 		
-		buttons.next.addActionListener(new ActionListener() {		
+		buttons.getNext().addActionListener(new ActionListener() {		
 			public void actionPerformed(ActionEvent e) {
 				panel.appendText(true);
 			}
 		});
 		
-		buttons.cancel.addActionListener(new ActionListener() {		
+		buttons.getCancel().addActionListener(new ActionListener() {		
 			public void actionPerformed(ActionEvent e) {
 				System.exit(0);
 				setVisible(false);

@@ -9,10 +9,10 @@ import javax.swing.JTextArea;
 
 public class PanelClass extends JPanel{
 	
-	public JFormattedTextField textField1;
-	public JFormattedTextField textField2;
-	public JFormattedTextField textField3;
-	public JFormattedTextField textField4;
+	private JFormattedTextField textField1;
+	private JFormattedTextField textField2;
+	private JFormattedTextField textField3;
+	private JFormattedTextField textField4;
 
 	private IntegerTextField tf1;
 	private IntegerTextField tf2;
@@ -27,10 +27,10 @@ public class PanelClass extends JPanel{
 		tf3 = new IntegerTextField();
 		tf4 = new IntegerTextField();
 		
-		add(tf1.textField);
-		add(tf2.textField);
-		add(tf3.textField);
-		add(tf4.textField);
+		add(tf1.getTextField());
+		add(tf2.getTextField());
+		add(tf3.getTextField());
+		add(tf4.getTextField());
 	}
 	public void appendText(Boolean appendText) {
 
@@ -48,7 +48,7 @@ public class PanelClass extends JPanel{
 			JTextArea textArea = new JTextArea();
 			textArea.setEditable(false);
 
-			textArea.append("x: " + tf1.textField.getText().toString() + "\n" + "y: " + tf2.textField.getText().toString() + "\n" + "Width: " + tf3.textField.getText().toString() +"\n" + "Height: " + tf4.textField.getText().toString());
+			textArea.append("x: " + tf1.getTextField().getText().toString() + "\n" + "y: " + tf2.getTextField().getText().toString() + "\n" + "Width: " + tf3.getTextField().getText().toString() +"\n" + "Height: " + tf4.getTextField().getText().toString());
 			panel2.add(textArea);
 			frame.getContentPane().add(BorderLayout.CENTER, panel2);
 		}

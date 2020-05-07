@@ -6,22 +6,30 @@ import javax.swing.JTextField;
 
 public class IntegerTextField {
 	
-	public JTextField textField;
-	public Label label;
+	private JTextField textField;
+	private Label label;
 	
 	public IntegerTextField() {
-		textField = new JTextField(10);
-		textField.addKeyListener(new KeyAdapter() {
+		setTextField(new JTextField(10));
+		getTextField().addKeyListener(new KeyAdapter() {
 			public void keyPressed(KeyEvent e) {
-			String value = textField.getText();
+			String value = getTextField().getText();
 			int l = value.length();
 			if(e.getKeyChar() >= '0' && e.getKeyChar() <= '9') {
-				textField.setEditable(true);
+				getTextField().setEditable(true);
 			} else {
-				textField.setEditable(false);
+				getTextField().setEditable(false);
 				label.setText(" Enter only numeric digits ( 0 - 9 ) ");
 			}
 			}
 		});
+	}
+
+	public JTextField getTextField() {
+		return textField;
+	}
+
+	public void setTextField(JTextField textField) {
+		this.textField = textField;
 	}
 }
