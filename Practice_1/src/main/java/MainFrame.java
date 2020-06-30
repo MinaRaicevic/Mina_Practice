@@ -1,47 +1,38 @@
-import java.awt.BorderLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+import com.jgoodies.forms.layout.CellConstraints;
+import com.jgoodies.forms.layout.FormLayout;
 
 public class MainFrame extends JFrame{
  
-	private PanelClass panel;
+	private PanelClass panelClass;
 	private Buttons buttons;
 	private Descriptions descriptions;
-	
-	private double inputX;
-	private double inputY;
-	private double inputWidth;
+	private FormLayout formLayout;
+	private JPanel formPanel;
+	private CellConstraints c;
 	
 	public MainFrame() {	
 		super("Test Application");
-
-		panel = new PanelClass();
+		panelClass = new PanelClass();
 		buttons = new Buttons();
 		descriptions = new Descriptions();
 		
-		setLayout(new BorderLayout());
-		
-		add(panel, BorderLayout.CENTER);
-		add(descriptions, BorderLayout.NORTH);
-		add(buttons, BorderLayout.SOUTH);
-		
-		buttons.getNext().addActionListener(new ActionListener() {		
-			public void actionPerformed(ActionEvent e) {
-				panel.appendText(true);
-			}
-		});
-		
-		buttons.getCancel().addActionListener(new ActionListener() {		
-			public void actionPerformed(ActionEvent e) {
-				System.exit(0);
-				setVisible(false);
-				dispose();
-			}
-		});
-		
+		formLayout = new FormLayout("60dlu, 3dlu, pref:grow, 3dlu", "pref, 3dlu, pref, 3dlu, pref, 3dlu:grow");
+		formPanel = new JPanel();
+		formPanel.setLayout(formLayout);
+		c = new CellConstraints();
+				
+		formPanel.add(descriptions, c.xy(1, 1));
+		formPanel.add(panelClass, c.xy(3, 1));
+		formPanel.add(buttons, c.xy(3, 3));
+
+				
 		setSize(600, 500);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(2);
+		add(formPanel);
+		pack();
 		setVisible(true); 
 	}
 }
